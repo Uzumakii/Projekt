@@ -1,2 +1,8 @@
-Informacje
-	1. Test
+Reader powinien za³adowaæ pojedyñczy obrazek, wrzucane obrazki na serwer powinny byæ numerowane od 1 do np 10 i 
+reader po kolei wczytywa³ by po jednym obrazku. Przy pomocy strza³ek w prawo i w lewo prze³¹czasz na kolejne lub 
+poprzednie obrazki. Jeœli jesteœmy na ostatnim obrazku i klikniemy strza³kê w prawo to powinno przejœæ do nastêpnego 
+rozdzia³uo ile taki istnieje. Jeœli nie istnieje to nic nie powinno siê robiæ. Jeœli jesteœmy na pierwszym obrazku i
+klikniemy w lewo to powinien siê za³adowaæ pierwszy obrazek poprzedniego rozdzia³u. Jeœli nie ma poprzedniego 
+rozdzia³u to nic nie powinno siê wykonaæ. Powinny byæ zablokowane wszelkie sposoby na to aby pobraæ wyœwietlany obrazek.
+Dodatkowo w prawym dolnym rogu obrazka powinien dodawaæ siê znak wodny grupy Brisingr. Powinna byæ te¿ mo¿liwoœæ 
+dowolnego prze³¹czania miêdzy rozdzia³ami.
