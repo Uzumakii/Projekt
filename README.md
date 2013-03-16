@@ -1,8 +1,6 @@
-Projekt
+##Projekt
 =======
-	Reader Manga 
+###	Reader Manga 
 	
-	(c) 
-		Tomasz Tomala
-		Krzysztof Pazdur
+(c) 2013 Tomasz Tomala, Krzysztof Pazdur
 		
