@@ -19,6 +19,7 @@ header
 	border-bottom:1px solid #333;
 	line-height:50px;
 	background: repeat-x url(images/test.png) top;
+	box-shadow: 1px 1px 4px #000;
  	
 }
 
@@ -51,4 +52,20 @@ header
 #przyciski div 
 {
 	display: inline-block;
+}
+.btn_back
+{
+	background: no-repeat url(images/btn_back.png) bottom;
+	height:42px;
+	width:146px;
+	display:inline-block;
+	opacity:0.2;
+	margin-left:10px;
+	cursor:pointer;
+
+}
+.btn_back:hover
+{
+	opacity:0.6	;
+ 
 }
