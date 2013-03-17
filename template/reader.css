@@ -6,21 +6,49 @@ body {
 	line-height: normal;
 	font-weight: normal;
 	font-variant: normal;
-	color: #333;
-	background-color: #FFFFFF;
+	color: #FEFEFE;
 	margin: 0px;
+	background-color: rgb(25,25,25);
+
+
 }
 h1,h2,h3,h4,h5,h6 { margin: 0px; padding:0px;}
 header
 {
-	height:80px;
-	border-bottom:3px solid #03C;
-	line-height:80px;
+	height:50px;
+	border-bottom:1px solid #333;
+	line-height:50px;
+	background: repeat-x url(images/test.png) top;
+ 	
 }
-header h1
+
+.przycisk_manga,.przycisk_chapter
 {
-	font-family: "Segoe Script";
-	font-weight:100;
-	font-size:3em;
-	margin-left:50px;
+	padding-left:15px;
+	padding-right:15px;
+	height:35px;
+	line-height:35px;
+	border:1px solid #000;
+	background: #ebebeb;
+	text-shadow: 1px 1px 0px #fff;
+	border-radius:6px;
+	color:#222;
+	margin-left:10px;
+	margin-right:10px;
+	cursor:pointer
+  
+}
+.przycisk_manga:hover,.przycisk_chapter:hover
+{
+	text-shadow: 1px 1px 0px #000;
+	color:#CCC;
+	background: #ef1a1d; 
+}
+#przyciski
+{
+	float:right;	
+}
+#przyciski div 
+{
+	display: inline-block;
 }
