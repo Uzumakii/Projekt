@@ -175,3 +175,57 @@ box-shadow: 0px 0px 29px #000;
 {
 	background:#444;
 }
+
+#strona
+{
+		left: 81%;
+		right: 2%;
+		top: 51px;
+		border: 1px solid #555;
+		position: fixed;
+		height: 281px;
+		overflow: auto;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		
+		border-radius: 6px;
+		padding: 3px;
+	
+}
+#strona ul
+{
+	margin:0;
+	list-style-type:none;
+	padding:0;
+	line-height:40px;
+
+}
+#strona ul li
+{
+		display:inline-block;
+		height:40px;
+		width:40px;
+		text-align:center;
+		background:#333;
+		margin:2px;
+		border: 1px solid #000;
+		border-top: 1px solid #666;
+		border-bottom: 1px solid #444;
+		cursor:pointer;
+
+}
+#strona ul li:hover
+{
+	background:#444 !important;
+}
+#strona .current,#strona .current:hover
+{
+	background-color: #DF4B0D !important;
+	border-top: 1px solid  #FFB366 !important;
+}
+
+
+
+
+
+

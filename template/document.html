@@ -36,7 +36,7 @@ function cancelFullscreen() {
     </div>
     		 <div id="przyciski">
                <div class="przycisk_chapter" id="przycisk_01">Wybierz Rozdział&nbsp;&nbsp;<strong>&darr;</strong>               </div>
-               <div class="przycisk_manga" id="przyciski_02">Wybierz Stronę &nbsp;&nbsp;<strong>&darr;</strong></div>
+               <div class="przycisk_manga" id="przycisk_02">Wybierz Stronę &nbsp;&nbsp;<strong>&darr;</strong></div>
                <img id="view-fullscreen" title="Pełny Ekran"   src="template/images/fulscr.png" >
 
 <div id="rozdzial" class="box" style="display:none">
@@ -46,6 +46,31 @@ function cancelFullscreen() {
         <li>Roździał 3</li>
         <li>Roździał 4</li>
         <li>Roździał 5</li>
+
+    </ul>
+</div>	
+<div id="strona" class="box" style="display:none">
+	<ul>
+    	<li>1</li>
+        <li>2</li>
+        <li class="current">3</li>
+        <li>4</li>
+        <li>5</li>
+    	<li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    	<li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+        <li>18</li>
+        <li>19</li>
+        <li>20</li>
 
     </ul>
 </div>		
@@ -90,8 +115,11 @@ $("#view-fullscreen").click(function(e) {
 
 $("#przycisk_01").click(function()
 {
-	
 	$("#rozdzial").fadeToggle(800);
+});
+$("#przycisk_02").click(function()
+{
+	$("#strona").fadeToggle(800);
 });
 </script>
 </body>
