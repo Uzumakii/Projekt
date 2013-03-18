@@ -38,53 +38,32 @@ function cancelFullscreen() {
                <div class="przycisk_chapter" id="przycisk_01">Wybierz Rozdział&nbsp;&nbsp;<strong>&darr;</strong>               </div>
                <div class="przycisk_manga" id="przycisk_02">Wybierz Stronę &nbsp;&nbsp;<strong>&darr;</strong></div>
                <img id="view-fullscreen" title="Pełny Ekran"   src="template/images/fulscr.png" >
-
+<!-- BEGIN rozdzialy -->
 <div id="rozdzial" class="box" style="display:none">
 	<ul>
-    	<li>Roździał 1</li>
-        <li>Roździał 2</li>
-        <li>Roździał 3</li>
-        <li>Roździał 4</li>
-        <li>Roździał 5</li>
-
+    	<li>{rozdzialy.ROZ}</li>
     </ul>
 </div>	
+<!-- END rozdzialy -->
+<!-- BEGIN strony -->
 <div id="strona" class="box" style="display:none">
 	<ul>
-    	<li>1</li>
-        <li>2</li>
-        <li class="current">3</li>
-        <li>4</li>
-        <li>5</li>
-    	<li>6</li>
-        <li>7</li>
-        <li>8</li>
-        <li>9</li>
-        <li>10</li>
-    	<li>11</li>
-        <li>12</li>
-        <li>13</li>
-        <li>14</li>
-        <li>15</li>
-        <li>16</li>
-        <li>17</li>
-        <li>18</li>
-        <li>19</li>
-        <li>20</li>
-
+    	<li>{strony.STR}</li>
     </ul>
 </div>		
-             </div>
+<!-- END strony -->
+		</div>
     </header>
 <div id="odstep">
 </div>
-
-	<div class="reszta_02" align="center">
-    	<div class="strzalka" id="strzalka_lewa"></div>
-		<img src="http://img.manga-lib.pl/the_breaker_new_waves/109/109_002.jpg" height="50%" width="50%" id="obraz">
-        <div class="strzalka"    id="strzalka_prawa"></div>
+ 
+	<div class="reszta_02" align="center" >
+    	<div class="strzalka" id="strzalka_lewa" draggable="true"></div>
+		<img src="http://img.manga-lib.pl/the_breaker_new_waves/109/0tyt.jpg" height="50%" width="50%" id="obraz">
+        <div class="strzalka"    id="strzalka_prawa" draggable="true"></div>
         
 	</div>
+ 
 <script>
 function scin()
 {
@@ -127,6 +106,73 @@ $("#przycisk_02").click(function()
 	$("#rozdzial").mouseleave(function(e) {
         $("#rozdzial").fadeOut(800);
     });
+	
+	
+	// Maksymanlna strona: informacja dla funkcji spr strzałki aby po osiągnięciu tej wartości (aktualna_pozycja) się odpowiednia strzałka chowała.
+	var maksymalna_strona = 17;
+	var minimalna_strona = 1;
+	var aktualna_pozycja = 1;
+	var czesci = new Array();
+		czesci[1] = "http://img.manga-lib.pl/the_breaker_new_waves/109/0tyt.jpg";
+		czesci[2] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_001.jpg";
+		czesci[3] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_002.jpg";
+		czesci[4] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_003.jpg";
+		czesci[5] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_004.jpg";
+		czesci[6] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_005.jpg";
+		czesci[7] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_006.jpg";
+		czesci[8] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_007.jpg";
+		czesci[9] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_008.jpg";
+		czesci[10] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_009.jpg";
+		czesci[11] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_010.jpg";
+		czesci[12] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_011.jpg";
+		czesci[13] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_012.jpg";
+		czesci[14] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_013.jpg";
+		czesci[15] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_014.jpg";
+		czesci[16] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_015.jpg";
+		czesci[17] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_016.jpg";
+		
+	$(document).ready(function()
+	{
+		if(aktualna_pozycja == minimalna_strona)
+		{
+			$("#strzalka_lewa").hide();
+		}
+		else if ( aktualna_pozycja == maksymalna_strona)
+		{
+			$("#strzalka_prawa").hide();
+		}
+	}
+	);
+	
+	
+	$("#strzalka_lewa").click(function(e) {
+			aktualna_pozycja -= 1;	
+			$("#obraz").attr("src",czesci[aktualna_pozycja]);
+		if(aktualna_pozycja == minimalna_strona)
+		{
+			$("#strzalka_lewa").hide();
+			$("#strzalka_prawa").show();
+		}
+		else
+		{
+			
+			$("#strzalka_prawa").show();
+		}
+    });
+	$("#strzalka_prawa").click(function(e) {
+		aktualna_pozycja += 1;
+		$("#obraz").attr("src",czesci[aktualna_pozycja]);
+		if(aktualna_pozycja == maksymalna_strona)
+		{
+			$("#strzalka_lewa").show();
+			$("#strzalka_prawa").hide();
+		}
+		else
+		{
+			$("#strzalka_lewa").show();
+
+		}
+    });	
 </script>
 </body>
 </html>
