@@ -96,3 +96,33 @@ header
 	height:55px;
 
 }
+.strzalka
+{
+	height: 172px;
+	width:60px;
+	background:no-repeat url(images/strzalki.png);
+	position:fixed;
+	cursor:pointer;
+	opacity:0.4;
+ 
+}
+.reszta_02
+{
+	position:relative;
+}
+#strzalka_lewa
+{
+	left: 10%;
+	top:40%;
+}
+
+#strzalka_prawa
+{
+	background-position: -60px 0px;	
+	right: 10%;
+	top:40%;
+}
+#strzalka_lewa:hover,#strzalka_prawa:hover
+{
+	opacity:0.9;
+}

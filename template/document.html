@@ -45,19 +45,20 @@ function cancelFullscreen() {
 </div>
 
 	<div class="reszta_02" align="center">
+    	<div class="strzalka" id="strzalka_lewa"></div>
 		<img src="http://img.manga-lib.pl/the_breaker_new_waves/109/109_002.jpg" height="50%" width="50%" id="obraz">
-        
+        <div class="strzalka"    id="strzalka_prawa"></div>
         
 	</div>
 <script>
 function scin()
 {
-	/*launchFullScreen(document.documentElement);*/
+	launchFullScreen(document.documentElement);
 	$("#obraz").animate({height: "100%",width: "100%"},800);
 }
 function scout()
 {
-	/*cancelFullscreen();*/
+	cancelFullscreen();
 	$("#obraz").animate({height: "50%",width: "50%"},800);
 }
 var opened = false;
