@@ -35,10 +35,20 @@ function cancelFullscreen() {
     
     </div>
     		 <div id="przyciski">
-               <div class="przycisk_chapter" id="przycisk_01">Wybierz Rozdział&nbsp;&nbsp;<strong>&darr;</strong></div>
+               <div class="przycisk_chapter" id="przycisk_01">Wybierz Rozdział&nbsp;&nbsp;<strong>&darr;</strong>               </div>
                <div class="przycisk_manga" id="przyciski_02">Wybierz Stronę &nbsp;&nbsp;<strong>&darr;</strong></div>
                <img id="view-fullscreen" title="Pełny Ekran"   src="template/images/fulscr.png" >
 
+<div id="rozdzial" class="box" style="display:none">
+	<ul>
+    	<li>Roździał 1</li>
+        <li>Roździał 2</li>
+        <li>Roździał 3</li>
+        <li>Roździał 4</li>
+        <li>Roździał 5</li>
+
+    </ul>
+</div>		
              </div>
     </header>
 <div id="odstep">
@@ -55,11 +65,13 @@ function scin()
 {
 	launchFullScreen(document.documentElement);
 	$("#obraz").animate({height: "100%",width: "100%"},800);
+	$(".strzalka").addClass("schowaj");
 }
 function scout()
 {
 	cancelFullscreen();
 	$("#obraz").animate({height: "50%",width: "50%"},800);
+	$(".strzalka").removeClass("schowaj");
 }
 var opened = false;
 
@@ -74,6 +86,12 @@ $("#view-fullscreen").click(function(e) {
 			scin();
 			opened = true;
 		}
+});
+
+$("#przycisk_01").click(function()
+{
+	
+	$("#rozdzial").fadeToggle(800);
 });
 </script>
 </body>
