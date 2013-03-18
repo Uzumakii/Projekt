@@ -115,12 +115,18 @@ $("#view-fullscreen").click(function(e) {
 
 $("#przycisk_01").click(function()
 {
-	$("#rozdzial").fadeToggle(800);
+	$("#rozdzial").fadeIn(800);
 });
 $("#przycisk_02").click(function()
 {
-	$("#strona").fadeToggle(800);
+	$("#strona").fadeIn(800);
 });
+	$("#strona").mouseleave(function(e) {
+        $("#strona").fadeOut(800);
+    });
+	$("#rozdzial").mouseleave(function(e) {
+        $("#rozdzial").fadeOut(800);
+    });
 </script>
 </body>
 </html>
