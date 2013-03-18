@@ -26,6 +26,18 @@
 			
 			
 		}
+		public function PobierzIndex()
+		{
+			if($this->ilemang != 0)
+			{
+			$this->index_folderow = unserialize(@file_get_contents($this->path.$this->folder.'.index$'));
+			}
+			else
+			{
+				return false;
+			}
+		
+		}
 		public function GenerujIndex()
 		{
 			if($this->ilemang != 0)
@@ -35,12 +47,17 @@
 					$rozdzialow = count(glob($this->mangi[$i].'/*',GLOB_ONLYDIR));
 					 $struktura[] = array(
 									"nazwa" =>$this->mangi[$i],
-									"md5" => md5($this->mangi[$i]),
+									"md5" => md5(basename($this->mangi[$i])),
 									"rozdz" => ($rozdzialow)
 								 );
 				}
+				@file_put_contents($this->path.$this->folder.'.index$',serialize($struktura)) or error_log("Unable to save database index",2);
 			}
-			var_dump($struktura);
+			else
+			{
+				return false;
+			}
+			 
 		}
 	}
 

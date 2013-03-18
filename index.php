@@ -5,10 +5,12 @@
 	$templates = new Template('./template/');
 	$reader = new Reader();
 	$templates->set_filenames(array("body" => "document.html"));
+	if(!$reader->PobierzIndex())
+	{
+		$reader->GenerujIndex();
+	}
 	
-	$reader->GenerujIndex();
 	
-	var_dump($reader);	
 	
 	$templates->pparse("body");
 ?>
