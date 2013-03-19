@@ -12,11 +12,12 @@
 		
 		public $mangi = array();
 		 		
-			function __construct($directory = './',$folder = 'files/')
+			function Reader($directory = './',$folder = 'files/')
 			{
 					$this->path = $directory;
 					$this->folder = $folder;
 					Reader::IleMangWkatalogu();
+					
 			}
 		
 		public function IleMangWkatalogu()
@@ -48,7 +49,8 @@
 					 $struktura[] = array(
 									"nazwa" =>$this->mangi[$i],
 									"md5" => md5(basename($this->mangi[$i])),
-									"rozdz" => ($rozdzialow)
+									"rozdz" => $rozdzialow,
+									"opis" => (file_exists($this->mangi[$i].'/info')) ? file_get_contents($this->mangi[$i].'/info') : ''
 								 );
 				}
 				@file_put_contents($this->path.$this->folder.'.index$',serialize($struktura)) or error_log("Unable to save database index",2);
@@ -59,6 +61,27 @@
 			}
 			 
 		}
+		
+	  public function GetkManga($md5_get)
+	  {
+			if($this->ilemang != 0)
+			{
+				
+				foreach($this->index_folderow as $key => $val)
+				{
+					if($val["md5"] == $md5_get)
+					{
+						
+						return $val;
+						
+					}
+						
+				}
+					
+				return array();
+			}
+		  
+	  }
 	}
 
 

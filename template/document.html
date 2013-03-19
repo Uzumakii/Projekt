@@ -38,29 +38,38 @@ function cancelFullscreen() {
                <div class="przycisk_chapter" id="przycisk_01">Wybierz Rozdział&nbsp;&nbsp;<strong>&darr;</strong>               </div>
                <div class="przycisk_manga" id="przycisk_02">Wybierz Stronę &nbsp;&nbsp;<strong>&darr;</strong></div>
                <img id="view-fullscreen" title="Pełny Ekran"   src="template/images/fulscr.png" >
-<!-- BEGIN rozdzialy -->
+
 <div id="rozdzial" class="box" style="display:none">
 	<ul>
-    	<li>{rozdzialy.ROZ}</li>
+   		 <!-- BEGIN rozdzialy -->
+    	 {rozdzialy.ROZ} 
+        <!-- END rozdzialy -->
     </ul>
 </div>	
-<!-- END rozdzialy -->
-<!-- BEGIN strony -->
+
+
+
+
 <div id="strona" class="box" style="display:none">
 	<ul>
-    	<li>{strony.STR}</li>
+<!-- BEGIN wybor_stron -->
+    	{wybor_stron.STR}
+<!-- END wybor_stron -->
     </ul>
 </div>		
-<!-- END strony -->
+
+
+
+
 		</div>
     </header>
 <div id="odstep">
 </div>
  
 	<div class="reszta_02" align="center" >
-    	<div class="strzalka" id="strzalka_lewa" draggable="true"></div>
-		<img src="http://img.manga-lib.pl/the_breaker_new_waves/109/0tyt.jpg"  width="50%" id="obraz">
-        <div class="strzalka"    id="strzalka_prawa" draggable="true"></div>
+    	<a href="{LEFT_IMAGE}"><div class="strzalka" id="strzalka_lewa" draggable="true"></div></a>
+		<img src="{CURRENT_IMAGE}"  width="50%" id="obraz">
+        <a href="{RIGHT_IMAGE}"><div class="strzalka"    id="strzalka_prawa" draggable="true"></div></a>
         
 	</div>
  
@@ -111,26 +120,6 @@ $("#przycisk_02").click(function()
 	// Maksymanlna strona: informacja dla funkcji spr strzałki aby po osiągnięciu tej wartości (aktualna_pozycja) się odpowiednia strzałka chowała.
 	var maksymalna_strona = 17;
 	var minimalna_strona = 1;
-	var aktualna_pozycja = 1;
-	var czesci = new Array();
-		czesci[1] = "http://img.manga-lib.pl/the_breaker_new_waves/109/0tyt.jpg";
-		czesci[2] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_001.jpg";
-		czesci[3] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_002.jpg";
-		czesci[4] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_003.jpg";
-		czesci[5] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_004.jpg";
-		czesci[6] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_005.jpg";
-		czesci[7] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_006.jpg";
-		czesci[8] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_007.jpg";
-		czesci[9] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_008.jpg";
-		czesci[10] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_009.jpg";
-		czesci[11] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_010.jpg";
-		czesci[12] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_011.jpg";
-		czesci[13] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_012.jpg";
-		czesci[14] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_013.jpg";
-		czesci[15] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_014.jpg";
-		czesci[16] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_015.jpg";
-		czesci[17] = "http://img.manga-lib.pl/the_breaker_new_waves/109/109_016.jpg";
-		
 	$(document).ready(function()
 	{
 		if(aktualna_pozycja == minimalna_strona)
@@ -143,36 +132,7 @@ $("#przycisk_02").click(function()
 		}
 	}
 	);
-	
-	
-	$("#strzalka_lewa").click(function(e) {
-			aktualna_pozycja -= 1;	
-			$("#obraz").attr("src",czesci[aktualna_pozycja]);
-		if(aktualna_pozycja == minimalna_strona)
-		{
-			$("#strzalka_lewa").hide();
-			$("#strzalka_prawa").show();
-		}
-		else
-		{
-			
-			$("#strzalka_prawa").show();
-		}
-    });
-	$("#strzalka_prawa").click(function(e) {
-		aktualna_pozycja += 1;
-		$("#obraz").attr("src",czesci[aktualna_pozycja]);
-		if(aktualna_pozycja == maksymalna_strona)
-		{
-			$("#strzalka_lewa").show();
-			$("#strzalka_prawa").hide();
-		}
-		else
-		{
-			$("#strzalka_lewa").show();
 
-		}
-    });	
 </script>
 </body>
 </html>
