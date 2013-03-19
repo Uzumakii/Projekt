@@ -134,7 +134,26 @@ $("#przycisk_02").click(function()
 		}
 	}
 	);
-
+	
+document.onkeypress = document.onkeydown = function(e) {
+  if (! e) e = event;
+  var arrows = [ 39, 37];
+  for (key in arrows) {
+    if (arrows[key] == e.keyCode)
+	{
+		if(arrows[key] == 37)
+		{
+			if(aktualna_pozycja > minimalna_strona)
+			window.location = '{LEFT_IMAGE}';
+		}
+		else
+		{
+			if(aktualna_pozycja < maksymalna_strona)
+			window.location = '{RIGHT_IMAGE}';
+		}
+	}
+  } 
+}
 </script>
 </body>
 </html>
