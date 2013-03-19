@@ -75,8 +75,7 @@ $templates->set_filenames(array(
 					'IMAGE' => $files[$manga_strona-1],					
 					'RIGHT_IMAGE' => '?m='.$manga_hash_id.'&r='.$manga_rozdzial.'&s='.($manga_strona+1),
 					'MAX_NB' => $ile,
-					'AKT_POS' => $manga_strona,	
-					'PAGE_TITLE' => basename($aktualna_manga['nazwa']),			
+					'AKT_POS' => $manga_strona,				
 					));		 	
 			
 		}
