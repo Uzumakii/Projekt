@@ -68,12 +68,13 @@ function cancelFullscreen() {
  
 	<div class="reszta_02" align="center" >
     	<a href="{LEFT_IMAGE}"><div class="strzalka" id="strzalka_lewa" draggable="true"></div></a>
-		<img src="{CURRENT_IMAGE}"  width="50%" id="obraz">
+		<img src="{IMAGE}"  width="50%" id="obraz">
         <a href="{RIGHT_IMAGE}"><div class="strzalka"    id="strzalka_prawa" draggable="true"></div></a>
         
 	</div>
  
 <script>
+
 function scin()
 {
 	launchFullScreen(document.documentElement);
@@ -118,7 +119,8 @@ $("#przycisk_02").click(function()
 	
 	
 	// Maksymanlna strona: informacja dla funkcji spr strzałki aby po osiągnięciu tej wartości (aktualna_pozycja) się odpowiednia strzałka chowała.
-	var maksymalna_strona = 17;
+	var maksymalna_strona = {MAX_NB};
+	var aktualna_pozycja = {AKT_POS};
 	var minimalna_strona = 1;
 	$(document).ready(function()
 	{

@@ -13,6 +13,8 @@ $templates->set_filenames(array(
 	{
 		$reader->GenerujIndex();
 	}
+	
+	
 	$manga_hash_id =  $_GET['m'];
 	$manga_rozdzial = $_GET['r'];
 	$manga_strona = $_GET['s'];
@@ -54,12 +56,28 @@ $templates->set_filenames(array(
 			do
 			{
 				$templates->assign_block_vars('rozdzialy',array(
-					'ROZ' => ($i ==  $manga_rozdzial ) ?  '<li class="current">'.($i).'</li>' : '<li><a href="?m='.$manga_hash_id.'&r='.$i.'&s=1">'.$i.'</a></li>' 
+					'ROZ' => ($i ==  $manga_rozdzial ) ?  '<li class="current"> Rozdział '.($i).'</li>' : '<li><a href="?m='.$manga_hash_id.'&r='.$i.'&s=1"> Rozdział '.$i.'</a></li>' 
 				
 				));	
 				$i++;
 			}
 			while ( $i <= $aktualna_manga["rozdz"]);		
+			
+			
+			/*
+			
+				Strzałki i obraek
+			
+			*/
+			 $templates->assign_vars(array(
+			 		
+					'LEFT_IMAGE' => '?m='.$manga_hash_id.'&r='.$manga_rozdzial.'&s='.($manga_strona-1),
+					'IMAGE' => $files[$manga_strona-1],					
+					'RIGHT_IMAGE' => '?m='.$manga_hash_id.'&r='.$manga_rozdzial.'&s='.($manga_strona+1),
+					'MAX_NB' => $ile,
+					'AKT_POS' => $manga_strona,				
+					));		 	
+			
 		}
 	}
 	
