@@ -15,6 +15,10 @@
 			function Reader($directory = './',$folder = 'files/')
 			{
 					$this->path = $directory;
+					if(!is_dir($directory.$folder))
+					{
+						mkdir($directory.$folder,777);	
+					}
 					$this->folder = $folder;
 					Reader::IleMangWkatalogu();
 					
