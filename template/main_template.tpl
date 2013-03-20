@@ -1,37 +1,36 @@
 <!doctype html>
 <html>
 <head>
-  
-<meta charset="utf-8">
-<title>{PAGE_TITLE} - Reader Manga</title>
-<link href="template/reader.css" rel="stylesheet" type="text/css">
-<script src="template/js/jquery-1.9.1.min.js"  type="text/javascript"></script>
+	<meta charset="utf-8">
+	<title>{PAGE_TITLE}  Reader Manga</title>
+	<link href="template/reader.css" rel="stylesheet" type="text/css">
+	<script src="template/js/jquery-1.9.1.min.js"  type="text/javascript"></script>
 <script>
-function launchFullScreen(element) {
-  if(element.requestFullScreen) {
-    element.requestFullScreen();
-  } else if(element.mozRequestFullScreen) {
-    element.mozRequestFullScreen();
-  } else if(element.webkitRequestFullScreen) {
-    element.webkitRequestFullScreen();
-  }
-}
-function cancelFullscreen() {
-  if(document.cancelFullScreen) {
-    document.cancelFullScreen();
-  } else if(document.mozCancelFullScreen) {
-    document.mozCancelFullScreen();
-  } else if(document.webkitCancelFullScreen) {
-    document.webkitCancelFullScreen();
-  }
-}
+		function launchFullScreen(element) {
+		  if(element.requestFullScreen) {
+			element.requestFullScreen();
+		  } else if(element.mozRequestFullScreen) {
+			element.mozRequestFullScreen();
+		  } else if(element.webkitRequestFullScreen) {
+			element.webkitRequestFullScreen();
+		  }
+		}
+		function cancelFullscreen() {
+		  if(document.cancelFullScreen) {
+			document.cancelFullScreen();
+		  } else if(document.mozCancelFullScreen) {
+			document.mozCancelFullScreen();
+		  } else if(document.webkitCancelFullScreen) {
+			document.webkitCancelFullScreen();
+		  }
+		}
 </script>
 </head>
 
 <body>
 	
 	<header>
-    <div class="btn_back">
+    <div class="btn_back" id="btn_back">
     
     </div>
     		 <div id="przyciski">
@@ -117,6 +116,10 @@ $("#przycisk_02").click(function()
         $("#rozdzial").fadeOut(800);
     });
 	
+$("#btn_back").click(function()
+{
+	window.location = '../';
+});	
 	
 	// Maksymanlna strona: informacja dla funkcji spr strzałki aby po osiągnięciu tej wartości (aktualna_pozycja) się odpowiednia strzałka chowała.
 	var maksymalna_strona = {MAX_NB};
@@ -157,3 +160,4 @@ document.onkeypress = document.onkeydown = function(e) {
 </script>
 </body>
 </html>
+

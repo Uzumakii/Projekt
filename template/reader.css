@@ -46,7 +46,8 @@ header
 	cursor:pointer
   
 }
-.przycisk_manga:hover,.przycisk_chapter:hover
+.przycisk_manga:hover,
+.przycisk_chapter:hover
 {
 	text-shadow: 1px 1px 0px #000;
 	color:#CCC;
@@ -129,10 +130,13 @@ header
 	right: 10%;
 	top:40%;
 }
-#strzalka_lewa:hover,#strzalka_prawa:hover
+
+#strzalka_lewa:hover,
+#strzalka_prawa:hover
 {
 	opacity:0.9;
 }
+
 .schowaj
 {
 	opacity:0 !important;
@@ -232,8 +236,15 @@ box-shadow: 0px 0px 29px #000;
 	border-top: 1px solid  #FFB366 !important;
 }
 
+.on_error
+{
 
 
-
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: "Segoe UI Light";
+	text-shadow:1px 1px 0px #000;
+}
 
 
