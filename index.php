@@ -1,19 +1,20 @@
 <?php
 /*
 ==================================================================
-						- Program -
-						Manga Reader.
-						
-					- Zasada działania -
-		Według wytycznych, program ma za zadanie przede wszystkim
-		wyświetlać w sposób przyjazny użytkownikowi obrazki
-		pobierane z folderu w tym wypadku do kultowej
-		już mangi.
-	
-				+	Copyright (C) 2013 +
-			
-		+ Krzysztof Pazdur <pazdurk@gmail.com> (https://github.com/efik)
-		+ Tomasz Tomala	<twój@email> (https://github.com/NightWalker23)
+- Program -
+Manga Reader.
+
+- Zasada działania -
+
+Według wytycznych, program ma za zadanie przede wszystkim
+wyświetlać w sposób przyjazny użytkownikowi obrazki
+pobierane z folderu w tym wypadku do kultowej
+już mangi.
+
++	Copyright (C) 2013 +
+
++ Krzysztof Pazdur <pazdurk@gmail.com> (https://github.com/efik)
++ Tomasz Tomala	<twój@email> (https://github.com/NightWalker23)
 			
 			
 Niniejszy program jest wolnym oprogramowaniem; możesz go 
@@ -50,13 +51,7 @@ Cambridge, MA 02139, USA.
 	$reader 	= new Reader();				   # Główny silnik programu
 	
 	
-	#===============================================#
-	# Ustawiamy przestrzen nazw oraz przypisujemy   #
-	# ja do konkretnego pliku który będzie szablonem#
-	#===============================================#	
-	$szablon->set_filenames(array(
-		'body' => 'main_template.tpl')
-	);
+
 
 	
 	#===============================================#
@@ -77,6 +72,8 @@ Cambridge, MA 02139, USA.
 	$manga_strona 		= $_GET['s'];	# strony aktualnego rozdziłu
 
 
+	$wystopil_blad = false;
+	
 	if(isset($manga_hash_id) && isset($manga_rozdzial) && isset($manga_strona))
 	{
 		// Pobieramy sobie mangę sprawdzając zgodność hashy z tymi w indexie.
@@ -92,30 +89,37 @@ Cambridge, MA 02139, USA.
 			$lista_zdjec = glob($aktualna_manga["nazwa"].'/'.$manga_rozdzial.'/*.jpg');
 			$ile_zdjec	 = count($lista_zdjec);
 			 
-			if($ile_zdjec == 0)
+			if($ile_zdjec == 0 )
 			{
-				$szablon->assign_var('WYST_BLAD',true);
+				$wystopil_blad = true;
 			}
 			else
 			{
-				# Pierwsza pętla która przerobi mi te obrazki na strony dla readera.
-				$i = 0;	// licznik pętli
-				do
+				if($manga_strona > $ile_zdjec)
 				{
-					$szablon->assign_block_vars('wybor_stron',array(
-						'STR' => ($i == ($manga_strona-1)) ? '<li class="current">'.($i+1).'</li>' : '<li><a href="?m='.$manga_hash_id.'&r='.$manga_rozdzial.'&s='.($i+1).'">'.($i+1).'</a></li>'
-					));
-				
-					$i++;
-				
+					$wystopil_blad = true;	
 				}
-				while( $i < $ile_zdjec);
-				
+				else
+				{
+					# Pierwsza pętla która przerobi mi te obrazki na strony dla readera.
+					$i = 0;	// licznik pętli
+					do
+					{
+						$szablon->assign_block_vars('wybor_stron',array(
+							'STR' => ($i == ($manga_strona-1)) ? '<li class="current">'.($i+1).'</li>' : '<li><a href="?m='.$manga_hash_id.'&r='.$manga_rozdzial.'&s='.($i+1).'">'.($i+1).'</a></li>'
+						));
+					
+						$i++;
+					
+					}
+					while( $i < $ile_zdjec);
+				}
 			}
 			
 			// sprawdzanie czy nie przekroczyliśmy indexu.
-			if( $manga_rozdzial >= 1  AND $manga_rozdzial <= $aktualna_manga["rozdz"])
+			if( $manga_rozdzial >= 1  && $manga_rozdzial <= $aktualna_manga["rozdz"])
 			{
+				
 				// wyświetlanie rozdziałów
 				$i = 1;
 				do
@@ -130,29 +134,51 @@ Cambridge, MA 02139, USA.
 			}
 			else
 			{
-				$szablon->assign_var('WYST_BLAD',true);
+				$wystopil_blad = true;
 			}
 		} // koniec: jeśli tablica nie jest pusta.
 		else
 		{
-			$szablon->assign_var('WYST_BLAD',true);
-			
+			$wystopil_blad = true;
 		}
 	}
+	else
+	{
+		$wystopil_blad = true;
+	}
 
+		if($wystopil_blad)
+		{
+			#===============================================#
+			# Ustawiamy przestrzen nazw oraz przypisujemy   #
+			# ja do konkretnego pliku który będzie szablonem#
+			#===============================================#	
+			$szablon->set_filenames(array(
+				'error' => 'error_template.tpl')
+			);
+
+			$szablon->pparse("error");
+			exit;	
+		}
+		else
+		{
+			#===============================================#
+			# Ustawiamy przestrzen nazw oraz przypisujemy   #
+			# ja do konkretnego pliku który będzie szablonem#
+			#===============================================#	
+			$szablon->set_filenames(array(
+				'body' => 'main_template.tpl')
+			);
 			 $szablon->assign_vars(array(
 			 		
-					'LEFT_IMAGE' => '?m='.$manga_hash_id.'&r='.$manga_rozdzial.'&s='.($manga_strona-1),
-					'IMAGE' => $files[$manga_strona-1],					
-					'RIGHT_IMAGE' => '?m='.$manga_hash_id.'&r='.$manga_rozdzial.'&s='.($manga_strona+1),
-					'MAX_NB' => $ile,
+					'LEFT_IMAGE' => ($manga_strona == 1) ? "#" : '?m='.$manga_hash_id.'&r='.$manga_rozdzial.'&s='.($manga_strona-1),
+					'IMAGE' => $lista_zdjec[$manga_strona-1],					
+					'RIGHT_IMAGE' => ($manga_strona == $ile_zdjec) ? "#" : '?m='.$manga_hash_id.'&r='.$manga_rozdzial.'&s='.($manga_strona+1),
+					'MAX_NB' => $ile_zdjec,
 					'AKT_POS' => $manga_strona,		
 					'PAGE_TITLE' => basename($aktualna_manga['nazwa']),			
 		
 					));		 	
-			
-
-	
-	 
-	$szablon->pparse("body");
+			$szablon->pparse("body");
+		}
 ?>
